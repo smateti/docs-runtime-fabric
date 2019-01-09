@@ -1,0 +1,81 @@
+= Troubleshooting Guide for Runtime Fabric
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+This guide provides a list of common errors and
+
+== All Nodes
+
+The following steps are performed on all modes.
+
+=== Step: Detect Properties
+
+=== Step: Install Packages
+
+=== Step: Format and Mount Disks
+
+=== Step: Configure IP Tables Rules
+
+=== Step: Configure Kernel Modules
+
+=== Step: Start System Services
+
+=== Step: Configure dockerd Proxy
+
+== Controller VM Starting the Installation
+
+The following steps are performed on the node used to start the installation.
+
+=== Step: Fetch Installation Package
+
+=== Step: Create Cluster
+
+=== Step: Install RTF Components
+
+=== Step: Install Mule License
+
+=== Step: Generate Ops Center Credentials
+
+== Joining Nodes
+
+The following steps are performed on the nodes which join the controller VM used to start installation.
+
+=== Step: Join Cluster
+
+
+=== Deployment failed to become ready within the time limit
+Example of the error:
+----
+...
+[OK]
+Installing Runtime Fabric Agent. This may take several minutes...
+configmap "grafana-dashboards" deleted
+configmap "kapacitor-alerts" deleted
+Release "runtime-fabric" does not exist. Installing it now.
+The following deployments failed to become ready within the time limit:
+monitor ---
+Name:           monitor-79c7564b77-wb9c6
+Namespace:      rtf
+Node:           10.165.12.87/10.165.12.87
+Start Time:     Thu, 13 Dec 2018 20:23:59 +0000
+Labels:         app=monitor
+                pod-template-hash=3573120633
+Annotations:    checksum/config=4c4aac48d9cc8b24828b38ba0eb587840bc17b2449a54d593f74e2d58e5c12ae
+                kubernetes.io/psp=privileged
+                seccomp.security.alpha.kubernetes.io/pod=docker/default
+Status:         Running
+IP:             10.244.82.17
+Controlled By:  ReplicaSet/monitor-79c7564b77
+Containers:
+...
+<< More information outputted describing deployment manifest and stack trace >>
+----
+
+==== Remediation Steps:
+ * Verify outbound TCP port 5672 is open to the Internet. Connections should be allowed from the controller VM(s) running in your internal network to this hostname on the Internet: 
+ * A TCP proxy may be needed to establish a connection to the Internet. Check with your network team to verify and configure if needed. The xref:install-port-reqs.adoc[Network and Ports Requirements] page should provide the information required.
+ * 
+
+== See Also
+xref:getting-started.adoc[Before You Begin Working with Anypoint Runtime Fabric]
