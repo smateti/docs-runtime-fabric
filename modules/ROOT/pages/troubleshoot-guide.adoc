@@ -3,11 +3,24 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-This guide provides a list of common errors and
+This guide provides a list of common errors and steps to resolve them when installing Anypoint Runtime Fabric.
+
+The installation can be resumed where it stopped by running the init script:
+
+*AWS and Manual installations*:
+----
+/opt/anypoint/runtimefabric/init.sh 
+----
+
+*Azure installations*:
+----
+/opt/anypoint/runtimefabric/script.sh 
+----
+
 
 == All Nodes
 
-The following steps are performed on all modes.
+The following steps are performed on all nodes.
 
 === Step: Detect Properties
 
@@ -44,7 +57,7 @@ The following steps are performed on the nodes which join the controller VM used
 === Step: Join Cluster
 
 
-=== Deployment failed to become ready within the time limit
+==== Deployment failed to become ready within the time limit
 Example of the error:
 ----
 ...
@@ -75,7 +88,6 @@ Containers:
 ==== Remediation Steps:
  * Verify outbound TCP port 5672 is open to the Internet. Connections should be allowed from the controller VM(s) running in your internal network to this hostname on the Internet: 
  * A TCP proxy may be needed to establish a connection to the Internet. Check with your network team to verify and configure if needed. The xref:install-port-reqs.adoc[Network and Ports Requirements] page should provide the information required.
- * 
 
 == See Also
 xref:getting-started.adoc[Before You Begin Working with Anypoint Runtime Fabric]
