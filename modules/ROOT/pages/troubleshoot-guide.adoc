@@ -24,11 +24,64 @@ The following steps are performed on all nodes.
 
 === Step: Detect Properties
 
+This step detects the variables which the installation process needs to carry out its procedures. The methods for providing these variables to the installation vary based upon where the installation is running.
+
+* For AWS, the variables are set in the terraform script, and outputted to a file located in `/opt/anypoint/runtimefabric/env`.
+* For Azure, the variaables are set when running the ARM template, and are retrieved as tags on the Virtual Machine instances.
+* For manual installations, the user creates a file with the values located in `/opt/anypoint/runtimefabric/env`.
+
+After these properites are retrieved, a procedure will run to connect to Anypoint Platform and retrieve additional values based upon the `RTF_ACTIVATION_DATA` value.
+
+==== Common errors
+
+The following error may occur if there is an issue with the activation data value, or if there is trouble reaching the internet on the instance:
+
+----
+curl: (7) Failed connect to anypoint.mulesoft.com:443; Operation now in progress
+Error: Failed to fetch registration properties. (000). Please check your token is valid
+
+
+============ Error ============
+Exit code: 1
+Line:
+----
+
+If this error is observed, try the following:
+
+* Ensure your instance has outbound internet connectivity. A simple way to validate is to run the following command and verify a response is returned:
+
+----
+nc anypoint.mulesoft.com 443
+----
+
+* Re-try running the installation procedure, in case the network connectivity was not finished initalizing.
+** On Azure, the script should be located at `/opt/anypoint/runtimefabric/script.sh foreground`
+** On AWS and manual installations, the script should be located at `/opt/anypoint/runtimefabric/init.sh foreground`
+* Validate the activation data value is correct by comparing with the Runtime Fabric created in Anypoint Runtime Manager.
+
+If you are still encountering issues, please file a support ticket for further assistance.
+
 === Step: Install Packages
+
+This step 
 
 === Step: Format and Mount Disks
 
-=== Step: Configure IP Tables Rules
+This step performs the following tasks on the block devices or disks provided with the `RTF_DOCKER_DEVICE` and/or `RTF_ETCD_DEVICE` variables:
+
+. Performs a check to confirm the values map to block devices available on the instance.
+. Unmounts the disks in case they were previously mounted.
+. Formats the disks.
+. Adds an mount entry in the `/etc/fstab` file.
+. Creates directories based upon the values in `$DOCKER_MOUNT` and/or `$ETCD_MOUNT`.
+. Mounts the disks to the expected directories created above.
+
+
+==== Common errors
+
+
+
+=== Step: Configure iptables Rules
 
 === Step: Configure Kernel Modules
 
