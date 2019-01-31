@@ -48,22 +48,48 @@ Line:
 
 If this error is observed, try the following:
 
-* Ensure your instance has outbound internet connectivity. A simple way to validate is to run the following command and verify a response is returned:
-
+* Ensure your instance has outbound internet connectivity. A simple way to validate is to run the following command and verify a 301 response is returned:
++
 ----
-nc anypoint.mulesoft.com 443
+curl https://anypoint.mulesoft.com
 ----
-
++
 * Re-try running the installation procedure, in case the network connectivity was not finished initalizing.
 ** On Azure, the script should be located at `/opt/anypoint/runtimefabric/script.sh foreground`
-** On AWS and manual installations, the script should be located at `/opt/anypoint/runtimefabric/init.sh foreground`
+** On AWS and manual installatons, the script should be located at `/opt/anypoint/runtimefabric/init.sh foreground`
 * Validate the activation data value is correct by comparing with the Runtime Fabric created in Anypoint Runtime Manager.
 
 If you are still encountering issues, please file a support ticket for further assistance.
 
 === Step: Install Packages
 
-This step 
+This step will install required packages on the instance. It uses the `yum` package repository to download and install the required packages.
+
+==== Common errors
+
+If there is a failure on this step, verify the following:
+
+* Ensure your instance has outbound internet connectivity. A simple way to validate is to run the following command and verify a 301 response is returned:
++
+----
+curl https://anypoint.mulesoft.com
+----
++
+* If running a manual installation, ensure the `init.sh` script is run with root privledges:
++
+----
+sudo ./init.sh foreground
+----
++
+* Manually install one of the required packages to determine if it is successful outside of the installation script:
++
+----
+sudo yum install -y chrony
+----
++
+** If not successful, please work with your operations team for assistance. You may need to ask for elevated access to the instance.
+
+If manual installation of a package was successful, or if you still require assitance, please file a support ticket.
 
 === Step: Format and Mount Disks
 
@@ -76,9 +102,16 @@ This step performs the following tasks on the block devices or disks provided wi
 . Creates directories based upon the values in `$DOCKER_MOUNT` and/or `$ETCD_MOUNT`.
 . Mounts the disks to the expected directories created above.
 
-
 ==== Common errors
 
+If the values provided with the `RTF_DOCKER_DEVICE` and/or `RTF_ETCD_DEVICE` variables did not match with block devices on the instance, the following error may be outputted:
+
+----
+----
+
+If this error occurs:
+
+* 
 
 
 === Step: Configure iptables Rules
