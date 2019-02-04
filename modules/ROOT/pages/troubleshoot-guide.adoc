@@ -113,6 +113,17 @@ If this error occurs:
 
 * 
 
+If the block devices have already been mounted and are in use or locked by another resource, the following error may be outputted:
+
+
+----
+----
+
+If this error occurs:
+
+*
+
+
 
 === Step: Configure iptables Rules
 
