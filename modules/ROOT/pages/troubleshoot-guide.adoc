@@ -22,6 +22,43 @@ The installation can be resumed where it stopped by running the init script:
 
 The following steps are performed on all nodes.
 
+=== Check root user
+
+=== Load environment
+
+=== Decode activation data
+
+=== Fetch activation properties
+
+=== Detect properties
+
+=== Validate properties
+
+=== Install required packages
+
+=== Format and mount disks
+
+=== Configure kernel modules
+
+=== Start system services
+
+(leader)
+=== Fetch install package
+
+=== Install cluster
+
+=== Inject proxy into dockerd
+
+=== Install RTF components
+
+=== Install mule license
+
+=== Generate Ops Center credentials
+
+(joiner)
+=== Join cluster
+=== Inject proxy into dockerd
+
 === Step: Detect Properties
 
 This step detects the variables which the installation process needs to carry out its procedures. The methods for providing these variables to the installation vary based upon where the installation is running.
