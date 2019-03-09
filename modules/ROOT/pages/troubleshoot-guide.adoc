@@ -43,6 +43,7 @@ The following steps are performed on all nodes.
 === Start system services
 
 (leader)
+
 === Fetch install package
 
 === Install cluster
@@ -56,8 +57,12 @@ The following steps are performed on all nodes.
 === Generate Ops Center credentials
 
 (joiner)
+
 === Join cluster
+
 === Inject proxy into dockerd
+
+(Jeff ---)
 
 === Step: Detect Properties
 
