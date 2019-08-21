@@ -67,6 +67,14 @@ as well as individual components.
 
 To recover a node, follow the instructions provided in xref:manage-nodes.adoc[Add or Remove a Node from a Runtime Fabric].
 
+== Collecting Debug Package Information for an Application
+
+You can use `rtfctl` to perform a heap dump or a thread dump of a running application:
++
+----
+sudo ./rtfctl package delay
+----
+
 == Troubleshooting Issues with Environment Variables
 
 This step detects the variables which the installation process needs to carry out its
