@@ -20,6 +20,9 @@ Anypoint Runtime Fabric requires one of the following operating systems.
 * Red Hat (RHEL) v7.4, v7.5, v7.6
 * CentOS v7.4, v7.5, v7.6
 
+** If you are using CentOS v7.6, a full installation is required.
+//If it's already installed, how does the user know if it's a 'full' install? Otherwise, they should be warned about package depnedencies, etc.
+
 Use the same operating system for each node. If you attempt to install Runtime Fabric on 
 a different operating system version or distribution, the Runtime Fabric installer will fail.
 
