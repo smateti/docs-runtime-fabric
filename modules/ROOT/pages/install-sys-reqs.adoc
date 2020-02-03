@@ -42,7 +42,7 @@ node becomes unavailable or during maintenance operations such as OS patching.
 A minimum of 6 nodes are required for a production configuration of Runtime Fabric as shown in
 the following diagram.
 
-image::architecture-production.png[]
+image::../assets/images/architecture-production.png[]
 
 [NOTE]
 Runtime Fabric does not support running controller or worker nodes using burstable VMs.
