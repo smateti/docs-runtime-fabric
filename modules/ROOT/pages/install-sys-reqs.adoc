@@ -112,7 +112,7 @@ restarts. Also use the additional node when:
 Runtime Fabric requires a minimum of three nodes in a development environment as shown in the
 following diagram:
 
-image::architecture-development.png[]
+image::../assets/images/architecture-development.png[]
 
 [NOTE]
 Runtime Fabric does not support running controller or worker nodes using burstable VMs.
